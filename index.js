@@ -31,7 +31,7 @@ expressApp.post('/newyswsrequest', async (req, res) => {
   const data = req.body;
     console.log('Received new YSWS request:', data);
 
-
+try {
     await slackApp.client.chat.postMessage({
       channel: process.env.PRIVATE_CHANNEL_ID,
       text: `New YSWS Adder Submission: ${data.name}`,
@@ -73,8 +73,8 @@ detailedDescription: ${data.detailedDescription}`
     });
 
     res.status(200).send('✅ Webhook processed successfully');
-  } catch (error) {
-    console.error('Webhook error:', error);
+} catch (error) {
+    console.error('Error processing webhook:', error);
     res.status(500).send('❌ Error processing webhook');
   }
 });
