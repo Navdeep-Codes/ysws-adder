@@ -30,13 +30,7 @@ try {
 expressApp.post('/newyswsrequest', async (req, res) => {
   const data = req.body;
     console.log('Received new YSWS request:', data);
-  try {
-    if (data.slackId) {
-      await slackApp.client.chat.postMessage({
-        channel: data.slackId,
-        text: `👋 Hello! We received a new submission for review:\n*${data.name}*\n_Status: Pending Approval_`
-      });
-    }
+
 
     await slackApp.client.chat.postMessage({
       channel: process.env.PRIVATE_CHANNEL_ID,
