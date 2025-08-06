@@ -114,6 +114,6 @@ slackApp.action('reject_request', async ({ ack, body, client }) => {
 
 (async () => {
   await slackApp.start(3000);
-  expressApp.listen(3001, () => console.log('🌐 Webhook server running on port 3001'));
+  expressApp.listen(3101, () => console.log('🌐 Webhook server running on port 3101'));
 })();
 
