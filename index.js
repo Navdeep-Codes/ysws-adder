@@ -183,20 +183,15 @@ slackApp.action("approve_post", async ({ ack, action, client }) => {
   const { user, text } = JSON.parse(action.value);
 
   const userInfo = await client.users.info({ user });
-  const name = userInfo.user.real_name;
+  const name = userInfo.user.real_name || userInfo.user.name;
   const image = userInfo.user.profile.image_72;
 
   await client.chat.postMessage({
     channel: process.env.PUBLIC_CHANNEL_ID,
-    text: `Announcement from ${name}`,
+    text,
+    username: name,           
+    icon_url: image,          
     blocks: [
-      {
-        type: "context",
-        elements: [
-          { type: "image", image_url: image, alt_text: name },
-          { type: "mrkdwn", text: `*${name}* posted:` }
-        ]
-      },
       {
         type: "section",
         text: { type: "mrkdwn", text }
