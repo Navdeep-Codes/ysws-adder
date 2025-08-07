@@ -216,6 +216,6 @@ slackApp.action("deny_post", async ({ ack, action, client }) => {
 });
 
 (async () => {
-  await slackApp.start(3000);
+  await slackApp.start(3100);
   expressApp.listen(3101, () => console.log("🌐 Webhook server running on port 3101"));
 })();
