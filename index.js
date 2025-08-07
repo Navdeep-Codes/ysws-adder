@@ -121,7 +121,7 @@ slackApp.command("/post-request", async ({ ack, body, client }) => {
     view: {
       type: "modal",
       callback_id: "submit_post_request",
-      title: { type: "plain_text", text: "What do you want to post?" },
+      title: { type: "plain_text", text: "What to post?" },
       submit: { type: "plain_text", text: "Submit" },
       close: { type: "plain_text", text: "Cancel" },
       blocks: [
